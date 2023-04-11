@@ -4,11 +4,11 @@
 #include "ModelARX.h"
 #include "Testy_ModelARX.h"
 
-#define MAIN  // ustaw na MAIN aby skompilowaæ program docelowy / ustaw na DEBUG aby skompilowaæ program testujacy 
+#define DEBUG  // ustaw na MAIN aby skompilowaÄ‡ program docelowy / ustaw na DEBUG aby skompilowaÄ‡ program testujacy 
 
 #ifdef DEBUG
 
-//Funkcje pomocnicze dla testów:
+//Funkcje pomocnicze dla testÃ³w:
 
 void raportBleduSekwencji(std::vector<double>& spodz, std::vector<double>& fakt)
 {
@@ -25,7 +25,7 @@ void raportBleduSekwencji(std::vector<double>& spodz, std::vector<double>& fakt)
 
 bool porownanieSekwencji(std::vector<double>& spodz, std::vector<double>& fakt)
 {
-	constexpr double TOL = 1e-3;	// tolerancja dla porównañ zmiennoprzecinkowych
+	constexpr double TOL = 1e-3;	// tolerancja dla porÃ³wnaÅ„ zmiennoprzecinkowych
 	bool result = fakt.size() == spodz.size();
 	for (int i = 0; result && i < fakt.size(); i++)
 		result = fabs(fakt[i] - spodz[i]) < TOL;
@@ -50,7 +50,7 @@ void test_ModelARX_brakPobudzenia()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 	
-		// Walidacja poprawnoœci i raport:
+		// Walidacja poprawnoÅ›ci i raport:
 		if (porownanieSekwencji(spodzSygWy,faktSygWy))
 			std::cerr << "OK!\n";
 		else
@@ -88,7 +88,7 @@ void test_ModelARX_skokJednostkowy_1()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoœci i raport:
+		// Walidacja poprawnoÅ›ci i raport:
 		if (porownanieSekwencji(spodzSygWy, faktSygWy))
 			std::cerr << "OK!\n";
 		else
@@ -126,7 +126,7 @@ void test_ModelARX_skokJednostkowy_2()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoœci i raport:
+		// Walidacja poprawnoÅ›ci i raport:
 		if (porownanieSekwencji(spodzSygWy, faktSygWy))
 			std::cerr << "OK!\n";
 		else
@@ -163,7 +163,7 @@ void test_ModelARX_skokJednostkowy_3()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Weryfikacja poprawnoœci i raport:
+		// Weryfikacja poprawnoÅ›ci i raport:
 		if (porownanieSekwencji(spodzSygWy, faktSygWy))
 			std::cerr << "OK!\n";
 		else
