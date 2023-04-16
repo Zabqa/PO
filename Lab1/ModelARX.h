@@ -9,17 +9,17 @@
 /*
 DRY
 
-Don’t Repeat Yourself - nie powtarzaj siê
-£atwiejsze utrzymywanie kodu
+Donâ€™t Repeat Yourself - nie powtarzaj siÄ™
+Åatwiejsze utrzymywanie kodu
 
 KISS
 
-Jak najprosztszych i jak najbardziej zrozumia³ych rozwi¹zañ
+Jak najprosztszych i jak najbardziej zrozumiaÅ‚ych rozwiÄ…zaÅ„
 
 YAGNI
 
-Nie nale¿y tworzyæ kodu na przysz³oœæ
-Je¿eli w danym momencie kod jest zbêdny, nie nale¿y go pisaæ ani utrzymywaæ
+Nie naleÅ¼y tworzyÄ‡ kodu na przyszÅ‚oÅ›Ä‡
+JeÅ¼eli w danym momencie kod jest zbÄ™dny, nie naleÅ¼y go pisaÄ‡ ani utrzymywaÄ‡
 */
 
 class ModelARX:public ObiektSISO 
@@ -27,20 +27,20 @@ class ModelARX:public ObiektSISO
 private:
 	std::vector<double> A; //wielomian A
 	std::vector<double> B; //wielomian B
-	int k; //rz¹d opóŸnienia transportowego
-	double e; //obiekt formuj¹cy rozk³ad normalny
-	std::deque<double> ui; //pamiêæ (kolejka) dla sygna³ów wejœciowych
-	std::deque<double> yi; //pamiêæ (kolejka) dla sygna³ów wyjœciowych
-	std::deque<double> ki; //pamiêæ (kolejka) dla opóŸnienia transportowego
+	int k; //rzÄ…d opÃ³Åºnienia transportowego
+	double e; //obiekt formujÄ…cy rozkÅ‚ad normalny
+	std::deque<double> ui; //pamiÄ™Ä‡ (kolejka) dla sygnaÅ‚Ã³w wejÅ›ciowych
+	std::deque<double> yi; //pamiÄ™Ä‡ (kolejka) dla sygnaÅ‚Ã³w wyjÅ›ciowych
+	std::deque<double> ki; //pamiÄ™Ä‡ (kolejka) dla opÃ³Åºnienia transportowego
 	std::default_random_engine gen; //generator liczb losowych
-	std::normal_distribution<double> dist; //rozk³ad normalny
-	double noise(); //zak³ucenie
-	double polynom(std::vector<double> M, std::deque<double> x); //wielomian
+	std::normal_distribution<double> dist; //rozkÅ‚ad normalny
+	double noise(); //zakÅ‚ucenie
+	double polynom(std::vector<double> &M, std::deque<double> &x); //wielomian
 public:
-	void setA(std::vector<double> a);
-	void setB(std::vector<double> b);
-	void setK(int k);
-	void setE(double e);
+	void setVectorOfCoefficientsA(std::vector<double> A);
+	void setVectorOfCoefficientsB(std::vector<double> B);
+	void setDelay(int k);
+	void setError(double e);
 	virtual double symuluj(double u);
 	ModelARX() = delete;
 	ModelARX(std::vector<double> A, std::vector<double> B, double k = 1, double e = 0.0);
