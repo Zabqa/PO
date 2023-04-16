@@ -30,5 +30,6 @@ RegulatorPID::RegulatorPID(double k, double Ti, double Td) : Ci(0.0), Ld(0.0)
 
 double RegulatorPID::symuluj(double u)
 {
-	return 0.0;
+	Ci += u;
+    	return k*u + (Ti>0.0 ? + Ci/Ti : 0.0);
 }
