@@ -6,30 +6,30 @@ double ModelARX::noise()
 	return (e > 0) ? dist(gen) : 0;
 }
 
-double ModelARX::polynom(std::vector<double> M, std::deque<double> x)
+double ModelARX::polynom(std::vector<double> &M, std::deque<double> &x)
 {
 	return std::inner_product(M.begin(), M.end(), x.begin(), 0.0);
 }
 
-void ModelARX::setA(std::vector<double> a)
+void ModelARX::setVectorOfCoefficientsA(std::vector<double> A)
 {
-	A = a;
+	this->A = A;
 	yi.resize(A.size());
 }
 
-void ModelARX::setB(std::vector<double> b)
+void ModelARX::setVectorOfCoefficientsB(std::vector<double> B)
 {
-	B = b;
+	this->B = B;
 	ui.resize(B.size());
 }
 
-void ModelARX::setK(int k)
+void ModelARX::setDelay(int k)
 {
 	this->k = (k > 0) ? k : 1;
 	ki.resize(this->k);
 }
 
-void ModelARX::setE(double e)
+void ModelARX::setError(double e)
 {
 	this->e = (e >= 0) ? e : 0;
 	if(e > 0) 
@@ -49,8 +49,8 @@ double ModelARX::symuluj(double u)
 
 ModelARX::ModelARX(std::vector<double> A, std::vector<double> B, double k, double e)
 {
-	setA(A);
-	setB(B);
-	setK(k);
-	setE(e);
+	setVectorOfCoefficientsA(A);
+	setVectorOfCoefficientsB(B);
+	setDelay(k);
+	setError(e);
 }
