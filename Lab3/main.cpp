@@ -6,8 +6,6 @@
 #include "SygnalTrojkatny.h"
 #include "WhiteNoise.h"
 
-using namespace std;
-
 int main()
 {
 	/*Sygnal* sygnal = new WhiteNoise(
